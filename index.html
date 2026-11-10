@@ -3,15 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>LRC Converter</title>
 </head>
 <body>
+    <video id="bg" src="bg.mp4" autoplay muted loop playsinline></video>
+
     <h1>LRC Converter</h1>
     <p class="sub">Turn timestamped lyrics into a standard .lrc file.</p>
 
     <div class="tabs" role="tablist">
         <button class="tab" role="tab" aria-selected="true" data-t="conv">Timestamped TXT</button>
-        <button class="tab" role="tab" aria-selected="false" data-t="sync">Tap to sync</button>
     </div>
 
     <section class="panel" id="conv">
@@ -46,5 +48,6 @@
             <span class="status" id="status"></span>
         </div>            
     </section>
+    <script src="script.js"></script>
 </body>
 </html>

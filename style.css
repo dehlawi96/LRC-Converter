@@ -1,0 +1,200 @@
+:root {
+    --page: #1f1f1f;
+    --card: #ffffff;
+    --text: #1d1d1b;
+    --muted: #6b6a66;
+    --line: #d9d7d0;
+    --accent: #c2410c;
+    --accent-text: #ffffff;
+    --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+html {
+    background: var(--page);
+    min-height: 100%;
+}
+
+/* Background video,sits behind the white card */
+#bg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(0.75); /* lower this number to darken, remove the line for full brightness */
+}
+
+body {
+    max-width: 960px;
+    margin: 32px auto;
+    padding: 32px;
+    background: var(--card);
+    color: var(--text);
+    border-radius: 14px;
+    font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+h1 {
+    margin: 0 0 4px;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.sub {
+    margin: 0 0 24px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* ---------- Tabs ---------- */
+.tabs {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+}
+
+.tab {
+    padding: 10px 14px;
+    background: none;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    color: var(--muted);
+    font: inherit;
+    cursor: pointer;
+}
+
+.tab:hover { color: var(--text); }
+
+.tab[aria-selected="true"] {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+}
+
+.panel[hidden] { display: none; }
+
+/* ---------- Form fields ---------- */
+label {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    padding: 9px 11px;
+    background: #fff;
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font: inherit;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-color: transparent;
+}
+
+/* Title / Artist / Album / Precision */
+.meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+/* Input and output side by side */
+.cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+textarea {
+    min-height: 320px;
+    resize: vertical;
+    font-family: ui-monospace, Menlo, Consolas, monospace;
+    font-size: 0.88rem;
+    line-height: 1.5;
+}
+
+textarea[readonly] { background: #f6f5f2; }
+
+/* ---------- Buttons ---------- */
+.bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.btn {
+    padding: 9px 16px;
+    background: #fff;
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    font: inherit;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.btn:hover { border-color: var(--text); }
+
+.btn.primary {
+    background: var(--accent);
+    color: var(--accent-text);
+    border-color: var(--accent);
+}
+
+.btn.primary:hover { filter: brightness(1.08); }
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+/* Status message sits at the right end of the button row */
+.status {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.status.warn { color: var(--accent); }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 700px) {
+    body {
+        margin: 12px;
+        padding: 20px 16px;
+    }
+
+    .cols { grid-template-columns: 1fr; }
+
+    textarea { min-height: 220px; }
+
+    .status {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    #bg { display: none; }
+}
