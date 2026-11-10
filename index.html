@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LRC Converter</title>
+</head>
+<body>
+    <h1>LRC Converter</h1>
+    <p class="sub">Turn timestamped lyrics into a standard .lrc file.</p>
+
+    <div class="tabs" role="tablist">
+        <button class="tab" role="tab" aria-selected="true" data-t="conv">Timestamped TXT</button>
+        <button class="tab" role="tab" aria-selected="false" data-t="sync">Tap to sync</button>
+    </div>
+
+    <section class="panel" id="conv">
+        <div class="meta">
+            <div><label for="ti">Title</label><input type="text" id="ti" placeholder="Song title"></div>
+            <div><label for="ar">Artist</label><input type="text" id="ar" placeholder="Artist"></div>
+            <div><label for="al">Album</label><input type="text" id="al" placeholder="Album"></div>
+            <div>
+                <label for="prec">Precision</label>
+                <select name="" id="prec">
+                    <option value="2">[mm:ss.xx] (standard)</option>
+                    <option value="3">[mm:ss.xxx]</option>
+                </select>
+            </div>
+        </div>
+        <div class="cols">
+            <div>
+                <label for="src">Input (TXT)</label>
+                <textarea name="" id="src" spellcheck="false" placeholder="0:12 First line&#10;[00:17.80] Second line&#10;1:05 - Third line"></textarea>
+            </div>
+            <div>
+                <label for="out">Output (LRC)</label>
+                <textarea name="" id="out" readonly="readonly" spellcheck="false"></textarea>
+            </div>
+        </div>
+        <div class="bar">
+            <button class="btn" id="sample">Load sample</button>
+            <button class="btn" id="file">Open .txt file</button>
+            <input id="picker" type="file" accept=".txt,text/plain" hidden>
+            <button class="btn primary" id="copy">Copy</button>
+            <button class="btn primary" id="dl">Download .lrc</button>
+            <span class="status" id="status"></span>
+        </div>            
+    </section>
+</body>
+</html>
